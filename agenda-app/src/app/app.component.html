@@ -21,11 +21,9 @@
     <h2>Lista de Contatos</h2>
 
     <div id="div_botao-adicionar">
-      <a href="adicionar.html">
-        <button id="botao_adicionar">
-          <i class="fa-solid fa-user-plus"></i>
-        </button>
-      </a>
+      <button id="botao_adicionar" (click)="adicionarContato()">
+        <i class="fa-solid fa-user-plus"></i>
+      </button>
     </div>
 
     <li id="barra_lista-de-contatos">
@@ -46,9 +44,9 @@
           <div id="barra_contato-lista">62998651531</div>
 
           <div id="barra_acao-lista">
-            <a href="edição.html" style="color: black;"><i id="icone_edicao" class="fa-solid fa-user-pen"></i></a>
+            <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato()"></i>
             
-            <a href="" style="color: black;"><i id="icone_excluir" class="fa-solid fa-trash-can"></i></a>
+            <i id="icone_excluir" class="fa-solid fa-trash-can"></i>
           </div>
         </div>
 
@@ -59,9 +57,9 @@
             <div id="barra_contato-lista">62998651531</div>
   
             <div id="barra_acao-lista">
-              <a href="" style="color: black;"><i id="icone_edicao" class="fa-solid fa-user-pen"></i></a>
+              <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato()"></i>
 
-              <a href="" style="color: black;"><i id="icone_excluir" class="fa-solid fa-trash-can"></i></a>
+              <i id="icone_excluir" class="fa-solid fa-trash-can"></i>
             </div>
           </div>
         </div>
@@ -73,9 +71,9 @@
             <div id="barra_contato-lista">62998651531</div>
   
             <div id="barra_acao-lista">
-              <a href="" style="color: black;"><i id="icone_edicao" class="fa-solid fa-user-pen"></i></a>
+              <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato()"></i>
 
-              <a href="" style="color: black;"><i id="icone_excluir" class="fa-solid fa-trash-can"></i></a>
+              <i id="icone_excluir" class="fa-solid fa-trash-can"></i>
             </div>
           </div>
         </div>

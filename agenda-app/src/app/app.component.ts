@@ -10,16 +10,27 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  adicionar: boolean = true;
+  adicionar: boolean = false;
   editar: boolean = false;
 
   ngOnInit(): void {
 
   }
 
+  adicionarContato() {
+    this.adicionar = true
+    this.editar = false
+  }
+
+  editarContato() {
+    this.editar = true
+    this.adicionar = false
+  }
+
   onSubmit() {
     this.adicionar = false
     this.editar = false
+    console.log(this.editar)
   }
     
 }
