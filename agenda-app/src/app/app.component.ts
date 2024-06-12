@@ -1,20 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 import { Contato } from './contato';
 import { ContatoService } from './contato.service';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, HttpClientModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: [ ContatoService]
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   contato: Contato
 
   adicionar: boolean = false
@@ -39,13 +32,20 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.save(this.contato)
-                .subscribe( response => {
-                  console.log(response)
-                })
+    if(this.adicionar) {
+      this.service.save(this.contato)
+                  .subscribe( response => {
+                    console.log(response)
+                  })
+      this.adicionar = false
+    } else {
+      
+
+
+      this.editar = false
+    }
 
     this.adicionar = false
     this.editar = false
   }
-    
 }

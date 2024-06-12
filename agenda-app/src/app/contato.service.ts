@@ -18,8 +18,8 @@ export class ContatoService {
 
   getContato() : Contato {
     let contato: Contato = new Contato()
-    contato.nome = 'Vitor Cardoso'
-    contato.numero = 62999148580
+    contato.name = 'Vitor Cardoso'
+    contato.number = 62999148580
     return contato
   }
 }
