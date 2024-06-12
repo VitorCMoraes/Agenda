@@ -82,20 +82,20 @@
   </div>
 
   <div id="edicao_de_contatos" *ngIf="adicionar || editar">
-    <form (submit)="onSubmit()" id="formulario" method="" action="">
+    <form (ngSubmit)="onSubmit()" id="formulario" method="" action="">
       <h2 class="title" *ngIf="adicionar">Adicionar Contato</h2>
       <h2 class="title" *ngIf="editar">Editar Contato</h2>
 
       <label class="label">
         <span>Nome:</span>
 
-        <input type="text" name="nome" class="campo" placeholder="Digite o nome do contato" required=""/>
+        <input type="text" name="nome" class="campo" placeholder="Digite o nome do contato" [(ngModel)]="contato.nome" name="nome"/>
       </label>
                
       <label class="label">
         <span>Número:</span>
 
-        <input type="number" name="numero" class="campo" placeholder="Digite o número do contato" required=""/>
+        <input type="number" name="numero" class="campo" placeholder="Digite o número do contato" [(ngModel)]="contato.numero" name="numero"/>
       </label>
                
       <label class="label"> 
