@@ -26,59 +26,29 @@
       </button>
     </div>
 
-    <li id="barra_lista-de-contatos">
-      <div id="nomes_lista-de-contatos">
-        <div id="barra_nome-menu">Nome:</div>
+    <table id="barra_lista-de-contatos">
+      <thead>
+        <tr id="nomes_lista-de-contatos">
+          <th id="barra_nome-menu">Nome</th>
+          <th id="barra_contato-menu">Contato</th>
+          <th id="barra_acao-menu">Ação</th>
+        </tr>
+      </thead>
+    </table>
 
-        <div id="barra_contato-menu">Contato:</div>
-
-        <div id="barra_acao-menu">Ação:</div>
-      </div>
-    </li>
-
-    <div id="informacoes_contatos">
-      <div id="barra_informacoes-de-contato">
-        <div id="linhas_contatos">
-          <div id="barra_nome-lista">Joãozao</div>
-
-          <div id="barra_contato-lista">62998651531</div>
-
-          <div id="barra_acao-lista">
-            <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato()"></i>
+    <table id="informacoes_contatos">
+      <tbody id="barra_informacoes-de-contato">
+        <tr id="linhas_contatos" *ngFor="let contato of contatos">
+          <td id="barra_nome-lista">{{ contato.name }}</td>
+          <td id="barra_contato-lista">{{ contato.number }}</td>
+          <td id="barra_acao-lista">
+            <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato(contato.id)"></i>
             
-            <i id="icone_excluir" class="fa-solid fa-trash-can"></i>
-          </div>
-        </div>
-
-        <div id="barra_informacoes-de-contato">
-          <div id="linhas_contatos">
-            <div id="barra_nome-lista">Joãozao</div>
-  
-            <div id="barra_contato-lista">62998651531</div>
-  
-            <div id="barra_acao-lista">
-              <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato()"></i>
-
-              <i id="icone_excluir" class="fa-solid fa-trash-can"></i>
-            </div>
-          </div>
-        </div>
-
-        <div id="barra_informacoes-de-contato">
-          <div id="linhas_contatos">
-            <div id="barra_nome-lista">Joãozao</div>
-  
-            <div id="barra_contato-lista">62998651531</div>
-  
-            <div id="barra_acao-lista">
-              <i id="icone_edicao" class="fa-solid fa-user-pen" (click)="editarContato()"></i>
-
-              <i id="icone_excluir" class="fa-solid fa-trash-can"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>     
+            <i id="icone_excluir" class="fa-solid fa-trash-can" (click)="deletarContato(contato.id)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>    
   </div>
 
   <div id="edicao_de_contatos" *ngIf="adicionar || editar">

@@ -28,6 +28,13 @@ public class ContatoControler {
         return repository.findAll();
     }
 
+    @GetMapping("{id}")
+    public Contato geById(@PathVariable Integer id) {
+        return repository
+                .findById(id)
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pessoa não encontrada."));
+    }
+
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Integer id) {

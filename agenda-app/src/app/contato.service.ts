@@ -8,18 +8,26 @@ import { Observable } from 'rxjs';
 })
 export class ContatoService {
 
-  constructor( private http: HttpClient ) { 
-
-  }
+  constructor( private http: HttpClient ) {}
 
   save( contato: Contato ) : Observable<Contato> {
     return this.http.post<Contato>('http://localhost:8080/api/contatos', contato)
   }
 
-  getContato() : Contato {
-    let contato: Contato = new Contato()
-    contato.name = 'Vitor Cardoso'
-    contato.number = 62999148580
-    return contato
+  getContatos() : Observable<Contato[]> {
+    return this.http.get<Contato[]>('http://localhost:8080/api/contatos')
   }
+
+  getContatoById( id: number ) : Observable<Contato> {
+    return this.http.get<Contato>(`http://localhost:8080/api/contatos/${id}`)
+  }
+
+  put( contato: Contato ) : Observable<Contato> {
+    return this.http.put<Contato>(`http://localhost:8080/api/contatos/${contato.id}`, contato)
+  }
+
+  delete( id: number ) : Observable<Contato> {
+    return this.http.delete<Contato>(`http://localhost:8080/api/contatos/${id}`)
+  }
+
 }

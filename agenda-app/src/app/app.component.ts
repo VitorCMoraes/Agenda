@@ -9,6 +9,7 @@ import { ContatoService } from './contato.service';
 })
 export class AppComponent {
   contato: Contato
+  contatos: Contato[]
 
   adicionar: boolean = false
   editar: boolean = false
@@ -18,7 +19,8 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-
+    this.service.getContatos()
+                .subscribe( response => this.contatos = response )
   }
 
   adicionarContato() {
@@ -26,9 +28,19 @@ export class AppComponent {
     this.editar = false
   }
 
-  editarContato() {
+  editarContato(id: number) {
+    console.log(id)
+    this.service.getContatoById(id)
+                .subscribe( response => this.contato = response )
     this.editar = true
     this.adicionar = false
+  }
+
+  deletarContato(id: number) {
+    this.service.delete(id)
+                .subscribe( response => {
+                  console.log(response)
+                })
   }
 
   onSubmit() {
@@ -39,13 +51,11 @@ export class AppComponent {
                   })
       this.adicionar = false
     } else {
-      
-
-
+      this.service.put(this.contato)
+                  .subscribe( response => {
+                    console.log(response)
+                  })
       this.editar = false
     }
-
-    this.adicionar = false
-    this.editar = false
   }
 }
