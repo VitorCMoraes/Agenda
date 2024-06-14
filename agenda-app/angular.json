@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "agenda-app"
+    }
+  },
+  "defaultProject": "agenda-app",
+  "cli": {
+    "analytics": false
+  }
 }

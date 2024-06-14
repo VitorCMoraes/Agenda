@@ -26,20 +26,24 @@ export class AppComponent {
   adicionarContato() {
     this.adicionar = true
     this.editar = false
+    
+    this.contato.id = null
+    this.contato.name = ''
+    this.contato.number = null
   }
 
   editarContato(id: number) {
-    console.log(id)
-    this.service.getContatoById(id)
-                .subscribe( response => this.contato = response )
     this.editar = true
     this.adicionar = false
+
+    this.service.getContatoById(id)
+                .subscribe( response => this.contato = response )
   }
 
   deletarContato(id: number) {
     this.service.delete(id)
                 .subscribe( response => {
-                  console.log(response)
+                  this.ngOnInit()
                 })
   }
 
@@ -47,13 +51,13 @@ export class AppComponent {
     if(this.adicionar) {
       this.service.save(this.contato)
                   .subscribe( response => {
-                    console.log(response)
+                    this.ngOnInit()
                   })
       this.adicionar = false
     } else {
       this.service.put(this.contato)
                   .subscribe( response => {
-                    console.log(response)
+                    this.ngOnInit()
                   })
       this.editar = false
     }
