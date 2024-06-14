@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,16 @@ public class ContatoControler {
 
     @GetMapping
     public List<Contato> getAll() {
-        return repository.findAll();
+        List<Contato> contatos = repository.findAll();
+        Collections.sort(contatos);
+        return contatos;
+    }
+
+    @GetMapping("/buscar")
+    public List<Contato> getBySearch(@RequestParam("name") String termoBusca) {
+        List<Contato> contatos = repository.findByNameContainingIgnoreCase(termoBusca);
+        Collections.sort(contatos);
+        return contatos;
     }
 
     @GetMapping("{id}")

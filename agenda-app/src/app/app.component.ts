@@ -13,14 +13,21 @@ export class AppComponent {
 
   adicionar: boolean = false
   editar: boolean = false
+  pesquisar: string = ''
+
 
   constructor( private service: ContatoService ) {
     this.contato = new Contato()
   }
 
   ngOnInit(): void {
-    this.service.getContatos()
-                .subscribe( response => this.contatos = response )
+    if(this.pesquisar) {
+      this.service.getSearch(this.pesquisar)
+                  .subscribe( response => this.contatos = response)
+    } else {
+      this.service.getContatos()
+                  .subscribe( response => this.contatos = response )
+    }
   }
 
   adicionarContato() {
@@ -45,6 +52,15 @@ export class AppComponent {
                 .subscribe( response => {
                   this.ngOnInit()
                 })
+  }
+
+  pesquisarContato() {
+    this.ngOnInit()
+  }
+
+  deletarPesquisa() {
+    this.pesquisar = ''
+    this.ngOnInit()
   }
 
   onSubmit() {

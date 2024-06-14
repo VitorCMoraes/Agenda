@@ -18,6 +18,10 @@ export class ContatoService {
     return this.http.get<Contato[]>('http://localhost:8080/api/contatos')
   }
 
+  getSearch(texto: string) : Observable<Contato[]> {
+    return this.http.get<Contato[]>(`http://localhost:8080/api/contatos/buscar?name=${texto}`)
+  }
+
   getContatoById( id: number ) : Observable<Contato> {
     return this.http.get<Contato>(`http://localhost:8080/api/contatos/${id}`)
   }

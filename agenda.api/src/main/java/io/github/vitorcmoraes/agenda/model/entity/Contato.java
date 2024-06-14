@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Contato {
+public class Contato implements Comparable<Contato> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,4 +18,9 @@ public class Contato {
 
     @Column(length = 11)
     private String number;
+
+    @Override
+    public int compareTo(Contato outroContato) {
+        return this.getName().compareToIgnoreCase(outroContato.getName());
+    }
 }

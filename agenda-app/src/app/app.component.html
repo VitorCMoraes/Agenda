@@ -2,7 +2,7 @@
   <ul id="header">
     <li id="titulo_pagina">Agenda Telefonica</li>
 
-    <form action="">
+    <form>
       <li id="pesquisa_contato">
         <div id="div-botao-pesquisa">
           <button id="botao-de-pesquisa">
@@ -10,7 +10,8 @@
           </button>
         </div>
 
-        <input class="inputPesquisa" type="text" id="caixa-pesquisar_contato" name="pesquisar_contato" placeholder="Pesquisar...">    
+        <input class="inputPesquisa" type="text" id="caixa-pesquisar_contato" name="pesquisar_contato" placeholder="Pesquisar..." [(ngModel)]="pesquisar" (keyup)="pesquisarContato()">
+        <i class="fa-solid fa-x" id="limpar-pesquisa" *ngIf="pesquisar" (click)="deletarPesquisa()"></i>
       </li>
     </form>
   </ul>
