@@ -59,7 +59,7 @@ public class ContatoControler {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void refresh(@PathVariable Integer id, @RequestBody Contato contatoAtualizado) {
+    public void Put(@PathVariable Integer id, @RequestBody Contato contatoAtualizado) {
         repository
                 .findById(id)
                 .map(contato -> {

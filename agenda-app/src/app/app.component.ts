@@ -30,6 +30,10 @@ export class AppComponent {
     }
   }
 
+  pesquisarContato() {
+    this.ngOnInit()
+  }
+
   adicionarContato() {
     this.adicionar = true
     this.editar = false
@@ -37,6 +41,11 @@ export class AppComponent {
     this.contato.id = null
     this.contato.name = ''
     this.contato.number = null
+  }
+
+  cancelar() {
+    this.adicionar = false
+    this.editar = false
   }
 
   editarContato(id: number) {
@@ -47,15 +56,14 @@ export class AppComponent {
                 .subscribe( response => this.contato = response )
   }
 
-  deletarContato(id: number) {
-    this.service.delete(id)
-                .subscribe( response => {
-                  this.ngOnInit()
-                })
-  }
-
-  pesquisarContato() {
-    this.ngOnInit()
+  deletarContato(contato: Contato) {
+    const confirmacao = confirm(`Você tem certeza que deseja excluir ${contato.name}`);
+    if(confirmacao){
+      this.service.delete(contato.id)
+                  .subscribe( response => {
+                    this.ngOnInit()
+                  })
+    }
   }
 
   deletarPesquisa() {
@@ -78,4 +86,6 @@ export class AppComponent {
       this.editar = false
     }
   }
+
+  
 }
